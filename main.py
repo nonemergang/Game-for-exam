@@ -1,7 +1,7 @@
 
 import pygame
 import sys
-import const as c
+import constants as c
 from Player import Player
 
 
@@ -9,17 +9,14 @@ pygame.init()
 
 
 
-# Настройка экрана
 screen = pygame.display.set_mode((c.SCREEN_WIDTH, c.SCREEN_HEIGHT))
 pygame.display.set_caption("рыбка")
 
 
-# Создание игрока
-player = Player(50, c.SCREEN_HEIGHT - 50)
+player = Player(50, c.SCREEN_HEIGHT-50)
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
-# Основной игровой цикл
 running = True
 clock = pygame.time.Clock()
 
@@ -31,7 +28,7 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 player.jump()
-            if event.key == pygame.K_x: #или другая кнопка для атаки
+            if event.key == pygame.K_x:
                 player.attack()
             if event.key == pygame.K_LEFT:
                 player.speed_x = -5
@@ -44,19 +41,18 @@ while running:
                 player.speed_x = 0
 
 
-    # Обновление
+
     all_sprites.update()
 
-    # Рендеринг
+
     screen.fill(c.BLACK)
     all_sprites.draw(screen)
 
-    # Обновление экрана
+
     pygame.display.flip()
 
-    # Контроль FPS
     clock.tick(60)
 
-# Завершение Pygame
+
 pygame.quit()
 sys.exit()
