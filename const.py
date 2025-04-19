@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
@@ -7,13 +7,6 @@ SCREEN_HEIGHT = 600
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
-=======
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
 
 
-# Цвета
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
->>>>>>> fd5d583e9897478aafaf835b4407b60f00dbfc2b
+
