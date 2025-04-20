@@ -61,4 +61,81 @@ class Pose:
         y = -self.x*math.sin(angle*math.pi/180) + self.y*math.cos(angle*math.pi/180)
         self.set_position((x, y))
 
+    def add_pose(self, other, weight = 1, frame = None):
+        if frame:
+            other = other.copy()
+            other.rotate_position(frame.angle)
+        self.add_position(other.get_weighted_position(weight))
+        self.add_angle(other.angle*weight)
+
+
+    def distanse_to(self,other):
+        return (self-other).magnitude()
+
+    def magnitude(self):
+        distanse = math.sqrt(self.x*self.x + self.y * self.y)
+        return distanse
+
+
+    def copy(self):
+        return Pose(self.get_position(), self.angle)
+
+    def scale_to(self, magnitude):
+        my_magnitude = self.magnitude()
+        if my_magnitude == 0:
+            self.x = magnitude
+            self.y = 0
+            return
+        self.x *= magnitude / my_magnitude
+        self.y *= magnitude / my_magnitude
+
+    def clear(self):
+        self.x = 0
+        self.y = 0
+        self.angle = 0
+
+
+    def __add__(self,other):
+        copy = self.copy()
+        copy.add_pose(other, weight =-1)
+        return copy
+
+    def __sub__(self, other):
+        copy = self.copy()
+        copy.add_pose(other, weight = -1)
+        return copy
+
+    def __mul__(self, other):
+        copy = self.copy()
+        copy.x *= other
+        copy.y *= other
+        copy.angle *= other
+        return copy
+
+
+    def __pow__(self, other):
+        copy = self.copy()
+        if(copy.x>=0):
+            copy.x = copy.x ** other
+        else:
+            copy.x = (abs(copy.x) ** other) * -1
+        if (copy.y >= 0):
+            copy.y = copy.y ** other
+        else:
+            copy.y = (abs(copy.y) ** other) * -1
+        return copy
+
+    def __str__(self):
+        return f"<Pose x:{self.x} y:{self.y} angle:{self.angle}>"
+
+    def __repr__(self):
+        return self.__str__()
+
+
+
+
+
+
+
+
 
