@@ -133,9 +133,17 @@ class Pose:
 
 
 
+class PhysicsObject(GameObject):
+    def __init__(self, game, position, angle):
+        super().__init__(game)
+        self.pose =Pose(position, angle)
+        self.velocity = Pose(position = (0,0), angle = 0)
+        self.acceleration = Pose(position=(0,0), angle = 0)
 
-
-
+    def update(self, dt, events):
+        self.velocity.add_pose(self.acceleration, weight=dt)
+        self.pose.add_pose(self.velocity, weight=dt)
+    
 
 
 
