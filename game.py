@@ -1,7 +1,8 @@
 import constants as c
 import pygame
 import sys
-
+from sound_manager import SoundManager
+from camera import Camera
 
 
 
@@ -17,6 +18,19 @@ class Game():
         self.clock = pygame.time.Clock()
         self.crosshair = pygame.image.load("assets/images/crosshair.png")
         pygame.mouse.set_visible(False)
+        Camera.init()
+        SoundManager.init()
+        self.main_music_started = False
+        self.intro_music = pygame.mixer.Sound("")
+        self.intro_music.set_volume(0.3)
+        self.intro_music.play(-1)
+        self.menu = False
+        pygame.mixer.set_num_channels(32)
+
+
+    def main(self):
+        pass
+
 
 
     def get_events(self):
