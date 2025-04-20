@@ -35,7 +35,7 @@ class Pose:
     def get_angle_of_position(self):
         return math.atan2(-self.y, self.x)
 
-    def get_angle_randians(self):
+    def get_angle_radians(self):
         return self.angle*math.pi/180
 
     def get_unit_vector(self):
@@ -143,7 +143,7 @@ class PhysicsObject(GameObject):
     def update(self, dt, events):
         self.velocity.add_pose(self.acceleration, weight=dt)
         self.pose.add_pose(self.velocity, weight=dt)
-    
+
 
 
 
