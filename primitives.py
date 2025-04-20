@@ -56,5 +56,9 @@ class Pose:
     def add_angle(self, angle):
         self.set_angle(self.angle + angle)
 
-
+    def rotate_position(self, angle):
+        x = self.x*math.cos(angle*math.pi/180) - self.y*math.sin(angle*math.pi/180)
+        y = -self.x*math.sin(angle*math.pi/180) - self.y*math.cos(angle*math.pi/180)
+        self.set_position((x, y))
+        
 
