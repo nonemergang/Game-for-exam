@@ -15,6 +15,7 @@ class Game():
             self.screen = pygame.display.set_mode(c.WINDOW_SIZE)
 
         self.clock = pygame.time.Clock()
+        self.crosshair = pygame.image.load("assets/images/crosshair.png")
         pygame.mouse.set_visible(False)
 
 
