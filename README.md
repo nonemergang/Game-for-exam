@@ -1,4 +1,4 @@
 Игра "Темный лабиринт"
 Написана на pygame
 
-![](game.png)
+![](screen_game.png)
